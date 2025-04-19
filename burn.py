@@ -14,7 +14,7 @@ def hard_sub_videos_in_folder(folder_path):
             file_path = os.path.join(root, file)
             
             # Delete any .mp4.tmp files
-            if file.endswith(".mp4.tmp"):
+            if file.startswith("tmp_") and file.endswith(".mp4"):
                 print(f"Deleting temporary file: {file_path}")
                 os.remove(file_path)
                 continue
@@ -41,7 +41,7 @@ def hard_sub_videos_in_folder(folder_path):
                 
                 # Check if sanitized video file exists
                 if os.path.exists(sanitized_video_path):
-                    output_file = f"{sanitized_video_file}.tmp"
+                    output_file = f"tmp_{sanitized_video_file}"
                     output_path = os.path.join(root, output_file)
                     print(f"Matching video file found: {sanitized_video_file}")
                     try:
