@@ -1,0 +1,38 @@
+#docker container prune -f
+
+docker rm -f download-pocketcasts
+
+rm -rf /volume1/teamdrive/temp/media
+mkdir -p /volume1/teamdrive/temp/media
+
+docker pull byam/docker-dl-toggle
+docker run --name download-pocketcasts -v /volume1/teamdrive/config/toggle:/root/config/toggle -v /volume1/teamdrive/temp/media:/root/media byam/docker-dl-toggle
+
+rm /volume1/teamdrive/config/toggle/queue.txt
+touch /volume1/teamdrive/config/toggle/queue.txt
+
+
+cp -rf /volume1/teamdrive/temp/media/. /volume1/teamdrive/media
+
+find /volume1/teamdrive/media/pocketcasts/ -type f -name "*.mp4" -size -15M -exec rm {} \;
+
+cd /volume1/teamdrive/media/pocketcasts
+chown -R byam:users -R *
+sanitize_filenames_in_folder
+
+mv /volume1/teamdrive/media/pocketcasts/Discovery_Walking_Tours_TV* /volume1/Media/Others/podcasts/
+mv /volume1/teamdrive/media/pocketcasts/Ghib\ Ojisan* /volume1/teamdrive/media/pc/ghib-ojisan
+mv /volume1/teamdrive/media/pocketcasts/The\ Lost\ Ojisan* /volume1/teamdrive/media/pc/ghib-ojisan
+mv /volume1/teamdrive/media/pocketcasts/*News* /volume1/teamdrive/media/pc/news-tonight/
+mv /volume1/teamdrive/media/pocketcasts/CNA-Correspondent* /volume1/teamdrive/media/pc/cna-correspondent
+mv /volume1/teamdrive/media/pocketcasts/On-The-Red-Dot* /volume1/teamdrive/media/pc/on-the-red-dot
+mv /volume1/teamdrive/media/pocketcasts/Mothership* /volume1/teamdrive/media/pc/mothership
+mv /volume1/teamdrive/media/pocketcasts/iChang* /volume1/teamdrive/media/pc/ichang-rm
+mv /volume1/teamdrive/media/pocketcasts/wineking* /volume1/teamdrive/media/pc/wine-king
+mv /volume1/teamdrive/media/pocketcasts/RICE* /volume1/teamdrive/media/pc/rice-media
+mv /volume1/teamdrive/media/pocketcasts/* /volume1/teamdrive/media/pc/misc/
+
+touch /volume1/teamdrive/config/toggle/*
+
+
+#chown -R byam:users /volume1/homes/byam/config
