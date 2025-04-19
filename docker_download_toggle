@@ -29,6 +29,7 @@ mv /volume1/teamdrive/media/pocketcasts/On-The-Red-Dot* /volume1/teamdrive/media
 mv /volume1/teamdrive/media/pocketcasts/Mothership* /volume1/teamdrive/media/pc/mothership
 mv /volume1/teamdrive/media/pocketcasts/iChang* /volume1/teamdrive/media/pc/ichang-rm
 mv /volume1/teamdrive/media/pocketcasts/wineking* /volume1/teamdrive/media/pc/wine-king
+mv /volume1/teamdrive/media/pocketcasts/SEBIN* /volume1/teamdrive/media/pc/sebin
 mv /volume1/teamdrive/media/pocketcasts/RICE* /volume1/teamdrive/media/pc/rice-media
 mv /volume1/teamdrive/media/pocketcasts/* /volume1/teamdrive/media/pc/misc/
 
