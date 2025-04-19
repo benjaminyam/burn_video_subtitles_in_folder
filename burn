@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Call the Python script without any arguments
+python3 burn.py
